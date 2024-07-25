@@ -13,7 +13,6 @@
 #   limitations under the License.
 
 import numpy as np
-import random
 import torch
 import torch.nn as nn
 from transformers import get_linear_schedule_with_warmup
@@ -22,9 +21,10 @@ from torch.nn.utils import clip_grad_norm_
 from sklearn.metrics import accuracy_score, f1_score
 import os
 import pathlib
+import secrets
 
 def set_seed(random_seed=42):
-    random.seed(random_seed)
+    secrets.SystemRandom().seed(random_seed)
     np.random.seed(random_seed)
     torch.manual_seed(random_seed)
     if torch.cuda.is_available():
